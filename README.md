@@ -3,9 +3,9 @@
 This repo is made to easily do a simple blink test on 4 DOIT ESP32 devices.
 
 ## Where to start
-1. Set NodeId in NVS if not set yet, uncomment the macro SET_NODEID, and add the proper ID that you want to add (ranging 1-4)
-
-2. If NodeId in NVS was already set before, comment the macro SET_NODEID
+1. Determine whether or not you want to set NodeId
+  - Set NodeId (in global.h) if not set yet, uncomment the macro SET_NODEID, and add the proper ID that you want to add (ranging 1-4)
+  - If NodeId (in global.h) was already set before and you don't want to set a new NodeId, comment the macro SET_NODEID
 
 3. build and flash
 
@@ -17,7 +17,7 @@ This repo is made to easily do a simple blink test on 4 DOIT ESP32 devices.
 3. `idf.py -p /dev/ttyUSB3 build flash monitor` *change port in `idf.py -p [port] build flash monitor` to current port active if different
 
 ## Speedy way
-set up your ~/.bashrc to use these shortcuts
+add these lines within your ~/.bashrc to use these shortcuts
 
 ```
 alias ges='. $HOME/esp/esp-idf/export.sh'
@@ -40,6 +40,8 @@ alias mfes2='idf.py -p /dev/ttyUSB2 flash monitor'
 alias mfes3='idf.py -p /dev/ttyUSB3 flash monitor'
 ```
 
-Use this to build then flash to all 4 devices
+Write this in the terminal to build then flash to all 4 devices
 
 `bges && fes && fes1 && fes2 && fes3`
+
+note: made and tested on Ubuntu, I don't guarantee the steps will be the same on different OS's
